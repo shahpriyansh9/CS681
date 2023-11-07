@@ -1,20 +1,16 @@
 <project name="HW04 Distance" basedir="." default="run">
-    <!-- Set environment properties and define source and binary directories -->
     <property environment="env"/>
     <property name="src" location="src"/>
     <property name="bin" location="bin"/>
 
-    <!-- Define the classpath to include the bin directory -->
     <path id="classpath">
         <pathelement location="${bin}"/>
     </path>
 
-    <!-- Initialize the project by creating the bin directory -->
     <target name="init">
         <mkdir dir="${bin}"/>
     </target>
 
-    <!-- Compile the source code from the src directory to the bin directory -->
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
             <classpath refid="classpath"/>
@@ -22,12 +18,10 @@
         </javac>
     </target>
 
-    <!-- Run the TestDistance class from the hw04 package -->
-    <target name="run" depends="compile">
+    <target name="run" depends="clean, compile">
         <java classname="hw04.Distance" classpathref="classpath" fork="true"/>
     </target>
 
-    <!-- Clean the project by deleting the bin directory -->
     <target name="clean">
         <delete dir="${bin}"/>
     </target>
