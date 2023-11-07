@@ -1,17 +1,15 @@
 <project name="HW03 Car" basedir="." default="run">
     <property environment="env"/>
-
     <property name="src" location="src"/>
     <property name="bin" location="bin"/>
 
     <path id="classpath">
-        <pathelement location="bin"/>
+        <pathelement location="${bin}"/>
     </path>
 
     <target name="init">
         <mkdir dir="${bin}"/>
     </target>
-
 
     <target name="compile" depends="init">
         <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
@@ -20,7 +18,7 @@
         </javac>
     </target>
 
-    <target name="run" depends="compile">
+    <target name="run" depends="clean, compile">
         <java classname="hw03.Main" classpathref="classpath" fork="true"/>
     </target>
 
