@@ -35,19 +35,16 @@ public class Distance {
         List<List<Double>> euclideanDistanceMatrix = matrix(points, new Euclidean());
         System.out.println("Euclidean Distance:");
         System.out.println(euclideanDistanceMatrix.get(0).get(1));
-        System.out.println(euclideanDistanceMatrix.get(0).get(2));
         
         // Calculate and print distances using Chebyshev metric
         List<List<Double>> chebyshevDistanceMatrix = matrix(points, new Chebyshev());
         System.out.println("Chebyshev Distance:");
         System.out.println(chebyshevDistanceMatrix.get(0).get(1));
-        System.out.println(chebyshevDistanceMatrix.get(0).get(2));
         
         // Calculate and print distances using Manhattan metric
         List<List<Double>> manhattanDistanceMatrix = matrix(points, new Manhattan());
         System.out.println("Manhattan Distance:");
         System.out.println(manhattanDistanceMatrix.get(0).get(1));
-        System.out.println(manhattanDistanceMatrix.get(0).get(2));
     }
 
     private static List<List<Double>> generateRandomPoints(int numPoints, int dimensions) {
