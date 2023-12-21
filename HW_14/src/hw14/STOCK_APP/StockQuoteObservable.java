@@ -22,7 +22,7 @@ public class StockQuoteObservable extends Observable<StockEvent> {
     public Map<String, Double> getTickerMap() {
         tickerMapLock.lock();
         try {
-            return new HashMap<>(tickerMap); // Return a copy for thread safety
+            return new HashMap<>(tickerMap); 
         } finally {
             tickerMapLock.unlock();
         }
