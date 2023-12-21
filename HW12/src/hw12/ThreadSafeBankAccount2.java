@@ -79,10 +79,8 @@ public class ThreadSafeBankAccount2 implements BankAccount{
 			threads[i * 2 + 1].start();
 		}
 	
-		// Simulate main thread running for a while
 		Thread.sleep(5000);
 	
-		// Stop all threads
 		for (int i = 0; i < 5; i++) {
 			depositRunnables[i].stopRunning();
 			withdrawRunnables[i].stopRunning();
