@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class OperaBookingSystemUnsafe {
     private Map<Integer, String> seats;
-    private Map<String, String> userAccounts; // Username, Password
+    private Map<String, String> userAccounts; 
 
     public OperaBookingSystemUnsafe(int totalSeats) {
         this.seats = new HashMap<>();
         this.userAccounts = new HashMap<>();
         for (int i = 1; i <= totalSeats; i++) {
-            seats.put(i, null); // null indicates seat is available
+            seats.put(i, null); 
         }
     }
 
