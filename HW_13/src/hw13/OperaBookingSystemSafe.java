@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class OperaBookingSystemSafe {
     private Map<Integer, String> seats;
-    private Map<String, String> userAccounts; // Username, Password
+    private Map<String, String> userAccounts; 
     private ReentrantLock lock = new ReentrantLock();
     private volatile boolean shutdownInitiated = false;
 
