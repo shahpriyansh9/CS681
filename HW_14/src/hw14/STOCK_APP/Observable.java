@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class Observable<T> { // Generic type parameter changed to T
+public abstract class Observable<T> { 
     private final List<Observer<T>> observers = new LinkedList<>();
     private final Lock lock = new ReentrantLock();
 
