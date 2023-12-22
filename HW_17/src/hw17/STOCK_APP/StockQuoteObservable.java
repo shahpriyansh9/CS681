@@ -13,6 +13,6 @@ public class StockQuoteObservable extends Observable<StockEvent> {
     }
 
     public Map<String, Double> getTickerMap() {
-        return new HashMap<>(tickerMap); // Return a copy for thread safety
+        return new HashMap<>(tickerMap); 
     }
 }
