@@ -16,11 +16,11 @@ public class FileSearchVisitor implements FSVisitor {
     }
 
     public void visit(Link link) {
-        // No implementation needed for links
+        
     }
 
     public void visit(Directory dir) {
-        // No implementation needed for directories
+        
     }
 
     public void visit(File file) {
