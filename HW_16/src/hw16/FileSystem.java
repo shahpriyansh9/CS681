@@ -38,7 +38,7 @@ public abstract class FileSystem {
 
     protected FSElement createDefaultRoot() {
         Directory root = new Directory(null, "root", 0, LocalDateTime.now());
-        for (int i = 0; i < 1; i++) { // Create only one file per root
+        for (int i = 0; i < 1; i++) { // Creates only one file per root
             File file = new File(root, "testFile" + i + ".txt", 100, LocalDateTime.now());
             root.appendChild(file);
         }
@@ -76,11 +76,10 @@ public abstract class FileSystem {
     public void stopCrawling() {
         crawlingTerminated.set(true);
         System.out.println("Sending termination signal to all crawling threads...");
-        threadPool.shutdown(); // Initiates an orderly shutdown
-    
+        threadPool.shutdown();
         try {
             if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
-                threadPool.shutdownNow(); // Forcefully shuts down if not terminated
+                threadPool.shutdownNow(); 
                 if (!threadPool.awaitTermination(60, TimeUnit.SECONDS))
                     System.err.println("Thread pool did not terminate.");
             }
@@ -97,7 +96,7 @@ public abstract class FileSystem {
         for (File file : sharedFileList) {
             System.out.println("File: " + file.getName());
             fileCount++;
-            if (fileCount > 1000) { // Limit to printing only the first 1000 files
+            if (fileCount > 1000) { 
                 break;
             }
         }
@@ -118,7 +117,7 @@ public abstract class FileSystem {
             protected FSElement createDefaultRoot() {
                 Directory root = new Directory(null, "root", 0, LocalDateTime.now());
                 File file = new File(root, "testFile.txt", 100, LocalDateTime.now());
-                root.appendChild(file); // Add the file to the root directory
+                root.appendChild(file); 
                 return root;
             }
         };
