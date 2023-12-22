@@ -31,29 +31,26 @@ public class FileSystem {
 
     public LinkedList<Directory> getRootDirs() {
         synchronized (this.rootDirs) {
-            return new LinkedList<>(rootDirs); // Return a copy to avoid concurrent modification issues
+            return new LinkedList<>(rootDirs); 
         }
     }
 
     public static void main(String[] args) {
         Runnable task = () -> {
-            while (keepRunning.get()) {
-                FileSystem fileSystem = FileSystem.getFileSystem();
-                Directory root = new Directory(null, "root", 0, LocalDateTime.now());
-                fileSystem.appendRootDir(root);
-                System.out.println("FileSystem instance: " + fileSystem + ", Root Directories: " + fileSystem.getRootDirs());
-            }
+            FileSystem fileSystem = FileSystem.getFileSystem();
+            Directory root = new Directory(null, "root", 0, LocalDateTime.now());
+            fileSystem.appendRootDir(root);
+            System.out.println("FileSystem instance: " + fileSystem + ", Root Directories: " + fileSystem.getRootDirs());
         };
 
-        Thread[] threads = new Thread[12]; // More than 10 threads
+        Thread[] threads = new Thread[12];
         for (int i = 0; i < threads.length; i++) {
             threads[i] = new Thread(task);
             threads[i].start();
         }
 
-        // Sleep for some time then set keepRunning to false for 2-step termination
         try {
-            Thread.sleep(10000); // Let threads run for 10 seconds
+            Thread.sleep(3000); 
             keepRunning.set(false);
         } catch (InterruptedException e) {
             e.printStackTrace();
