@@ -13,12 +13,12 @@ public class Main {
         StockQuoteObservable[] observables = new StockQuoteObservable[NUM_OBSERVABLES];
         for (int i = 0; i < NUM_OBSERVABLES; i++) {
             observables[i] = new StockQuoteObservable();
-            observables[i].addObserver(new TableObserver()); // Add a TableObserver
-    observables[i].addObserver(new ThreeDObserver()); // Add a ThreeDObserver
-    observables[i].addObserver(new LineChartObserver()); // Add a TableObserver
+            observables[i].addObserver(new TableObserver()); // Adds a TableObserver
+    observables[i].addObserver(new ThreeDObserver()); // Adds a ThreeDObserver
+    observables[i].addObserver(new LineChartObserver()); // Adds a TableObserver
         }
 
-        // Executor service for managing threads
+        
         ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 
         // Submit tasks to executor service
@@ -34,9 +34,9 @@ public class Main {
             });
         }
 
-        // Shutdown executor and await termination
+        
         executor.shutdown();
-        // Additional code may be needed to properly wait for all tasks to complete
+        
     }
 }
 
