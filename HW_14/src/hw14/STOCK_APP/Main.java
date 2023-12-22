@@ -19,10 +19,10 @@ public class Main {
     observables[i].addObserver(new LineChartObserver()); // Adds a TableObserver
         }
 
-        // Executor service for managing threads
+        
         ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 
-        // Submit tasks to executor service
+        
         Random random = new Random();
         for (int i = 0; i < NUM_THREADS; i++) {
             executor.submit(() -> {
