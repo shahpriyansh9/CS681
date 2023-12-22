@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class Observable<T> { // Generic type parameter changed to T
+public abstract class Observable<T> { 
     private final List<Observer<T>> observers = new LinkedList<>();
     private final Lock lock = new ReentrantLock();
 
@@ -50,7 +50,7 @@ public abstract class Observable<T> { // Generic type parameter changed to T
     public void notifyObservers(T event) {
         List<Observer<T>> observersSnapshot;
     
-        // Create a snapshot of observers outside the lock
+        
         lock.lock();
         try {
             observersSnapshot = new ArrayList<>(observers);
@@ -58,7 +58,7 @@ public abstract class Observable<T> { // Generic type parameter changed to T
             lock.unlock();
         }
     
-        // Notify observers without holding the lock
+        
         for (Observer<T> observer : observersSnapshot) {
             observer.update(this, event);
         }
